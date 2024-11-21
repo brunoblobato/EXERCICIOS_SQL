@@ -1,0 +1,71 @@
+EXERCÍCIO SQL
+
+Você está criando um banco de dados simples para registrar informações pessoais das pessoas. O banco terá uma tabela com colunas para ID, nome completo, idade, gênero, nacionalidade, e-mail, estado civil, 
+nome do pai e nome da mãe. Após criar o banco, você adiciona três pessoas como exemplo. Agora, pense em uma pessoa que você conhece e escolha um número para ser o ID dela. 
+  Essa pessoa será atualizada com novas informações. Em seguida, escolha outro número de ID de uma pessoa que deseja remover completamente do banco de dados.
+
+
+# ETAPAS COMPLETAS PARA CRIAR, INSERIR E GERENCIAR UM BANCO DE DADOS SIMPLES USANDO MYSQL
+
+1. Criar o Banco de Dados e a Tabela:
+
+CREATE DATABASE RegistroPessoal;
+USE RegistroPessoal;
+
+CREATE TABLE pessoas (
+    id INT PRIMARY KEY,
+    nome_completo VARCHAR(100),
+    idade INT,
+    genero VARCHAR(10),
+    nacionalidade VARCHAR(50),
+    email VARCHAR(100),
+    estado_civil VARCHAR(20),
+    nome_pai VARCHAR(100),
+    nome_mae VARCHAR(100)
+);
+
+--------------------------------------------------------
+
+2. Inserir Três Pessoas no Banco:
+
+INSERT INTO pessoas (id, nome_completo, idade, genero, nacionalidade, email, estado_civil, nome_pai, nome_mae)
+VALUES 
+(1, 'Ana Souza', 29, 'Feminino', 'Brasileira', 'ana.souza@gmail.com', 'Solteira', 'João Souza', 'Maria Souza'),
+(2, 'Carlos Pereira', 35, 'Masculino', 'Brasileiro', 'carlos.pereira@gmail.com', 'Casado', 'Pedro Pereira', 'Clara Pereira'),
+(3, 'Beatriz Lima', 24, 'Feminino', 'Brasileira', 'beatriz.lima@gmail.com', 'Solteira', 'Rafael Lima', 'Laura Lima');
+
+--------------------------------------------------------
+
+3. Verifique os dados inseridos com o comando:
+
+SELECT * FROM pessoas;
+
+--------------------------------------------------------
+
+4. Atualizar Informações de Uma Pessoa:
+Escolha um ID, por exemplo, 1 (Ana Souza). Atualizaremos o e-mail e o estado civil.
+
+UPDATE pessoas
+SET email = 'ana.souza_novo@gmail.com', estado_civil = 'Casada'
+WHERE id = 1;
+
+--------------------------------------------------------
+
+5. Remover Uma Pessoa:
+Escolha outro ID, por exemplo, 2 (Carlos Pereira). Removeremos completamente.
+
+DELETE FROM pessoas
+WHERE id = 2;
+
+--------------------------------------------------------
+
+6. Excluir permanentemente todos os registros da tabela pessoas:
+
+TRUNCATE TABLE pessoas
+
+--------------------------------------------------------
+
+7. Para deletar completamente o banco de dados RegistroPessoal:
+
+DROP DATABASE RegistroPessoal
+
